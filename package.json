@@ -1,0 +1,22 @@
+{
+  "name": "Consultancy_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "give-me-a-joke": "^0.5.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.3.3"
+  }
+}
