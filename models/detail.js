@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const detailSchema = new mongoose.Schema({
+    userid:{
+        type:String,
+        
+    },
     firstname: {
         type: String,
         required: [true, 'Username cannot be blank']
@@ -33,6 +37,10 @@ const detailSchema = new mongoose.Schema({
         type: String,
         enum:['india','united states','indonesia','france','italy']
     },
+    timeslot: {
+        type: String,
+        enum:['9.00 a.m. to 12.30 p.m.','1.00 p.m. to 4.30 p.m.']
+    },
     servicetype: {
         type: String,
         enum:['electrical repair','generators','security','automation','remodelling','electrical system inspection']
@@ -40,7 +48,12 @@ const detailSchema = new mongoose.Schema({
     propertytype: {
         type: String,
         enum:['residential','commercial']
+    },
+    price:{
+        type:String,
+        
     }
+
 })
 
 
