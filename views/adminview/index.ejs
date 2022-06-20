@@ -6,16 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adithya Contract</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="public/style.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
+    <script>function myFunction(element, color) {
+            
+            element.style.color = color;
+            alert("Confirmation alert!");
+            
+        }</script>
 
 </head>
 
-<body style=" background-color: lightblue;">
+
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark  ">
         <div class="container-fluid">
@@ -71,99 +80,87 @@
                     <!-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="home.html">CONTACT</a>
                     </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/logout">LOGOUT</a>
-                    </li>
                 </ul>
             </div>
 
         </div>
     </nav>
-    <center>
-        <h3 style="padding:30px;">SCHEDULE APPOINTMENT</h3>
-    </center>
-    
-    <form style="align-items: center; padding:20px;" method="POST" action="/schedule">
-        <input name="userid" type="hidden" value="<%=user._id%>">
-        <div class="form-group  col-md-4">
-            <label class="required ">First Name</label><br>
-            <input type="text" placeholder="Your first name" name="firstname" class="form-control">
-        </div>
-        <div class="form-group col-md-4">
-            <label class="required">Last Name</label><br>
-            <input type="text" placeholder="Your last name" name="lastname" class="form-control">
-        </div>
-        <div class="form-group col-md-4">
-            <label class="required">Email</label><br>
-            <input type="text" placeholder="Your email address" class="form-control" name="email">
-        </div>
-        <div class="form-group col-md-4">
-            <label>Address</label>
-            <textarea class="form-control" rows="3" name="address"></textarea>
-        </div>
-        <div class="form-group col-md-4">
-            <label>City</label><br>
-            <input type="text" placeholder="City" class="form-control" name="city">
-        </div>
-        <div class="form-group col-md-4">
-            <label>Zip Code</label><br>
-            <input type="text" placeholder="Zip Code" class="form-control" name="zipcode">
-        </div>
-        <div class="form-group col-md-4">
-            <label>State</label>
-            <select class="form-control" name="state">
-                <option value="tamilnadu">Tamil Nadu</option>
-                <option value="kerala">Kerala</option>
-                <option value="karnataka">Karnataka</option>
-                <option value="andhra pradesh">Andhra Pradesh</option>
-                <option value="maharashtra">Maharashtra</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label>Country</label>
-            <select class="form-control" name="country">
-                <option value="india">India</option>
-                <option value="united states">United States</option>
-                <option value="indonesia">Indonesia</option>
-                <option value="france">France</option>
-                <option value="italy"> Italy</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label>Time slot</label>
-            <select class="form-control" name="timeslot">
-                <option value="9.00 a.m. to 12.30 p.m.">9.00 a.m. to 12.30 p.m.</option>
-                <option value="1.00 p.m. to 4.30 p.m.">1.00 p.m. to 4.30 p.m.</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label>Service Type</label>
-            <select class="form-control" name="servicetype">
-                <option value="electrical repair">Electrical Repair</option>
-                <option value="generators">Generators</option>
-                <option value="security">Security</option>
-                <option value="automation">Automation</option>
-                <option value="remodelling">Remodelling</option>
-                <option value="electrical system inspection">Electrical System Inspection</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label>Property Type</label>
-            <select class="form-control" name="propertytype">
-                <option value="residential">Residential</option>
-                <option value="commercial">Commercial</option>
-            </select>
-        </div>
+    <br>
+    <br>
+    <br>
+    <h1>Hello Admin!</h1>
 
-        <br>
-
-        <br>
-        <!-- <a class="btn btn-primary" role="button" value="Add Name">Submit</a> -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+                <th scope="col">Zipcode</th>
+                <th scope="col">State</th>
+                <th scope="col">Country</th>
+                <th scope="col">TimeSlot</th>
+                <th scope="col">ServiceType</th>
+                <th scope="col">PropertyType</th>
 
 
-        <button class="btn btn-primary">Submit</button>
-    </form>
+            </tr>
+        </thead>
+        <tbody>
+            <%var count=0%>
+                <% for(let i of details){%>
 
+                    <tr>
+                        <%count=count+1%>
+                            <td>
+                                <%=count%>
+                            </td>
+                            <td>
+                                <%=i.firstname.toUpperCase()%>
+                            </td>
+                            <td>
+                                <%=i.lastname.toUpperCase()%>
+                            </td>
+                            <td>
+                                <%=i.email%>
+                            </td>
+                            <td>
+                                <%=i.address%>
+                            </td>
+                            <td>
+                                <%=i.city%>
+                            </td>
+                            <td>
+                                <%=i.zipcode%>
+                            </td>
+                            <td>
+                                <%=i.state.toUpperCase()%>
+                            </td>
+                            <td>
+                                <%=i.country.toUpperCase()%>
+                            </td>
+                            <td>
+                                <%=i.timeslot.toUpperCase()%>
+                            </td>
+                            <td>
+                                <%=i.servicetype.toUpperCase()%>
+                            </td>
+                            <td>
+                                <%=i.propertytype.toUpperCase()%>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="/adminview/<%=i._id%>" onclick="myFunction(this, 'green')" id="a">Confirm</a>
+                            </td>
+
+                    </tr>
+                    <%}%>
+
+
+        </tbody>
+    </table>
 
 </body>
 

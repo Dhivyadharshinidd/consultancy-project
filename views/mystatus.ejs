@@ -15,7 +15,7 @@
 
 </head>
 
-<body style=" background-color: lightblue;">
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark  ">
         <div class="container-fluid">
@@ -79,91 +79,23 @@
 
         </div>
     </nav>
-    <center>
-        <h3 style="padding:30px;">SCHEDULE APPOINTMENT</h3>
-    </center>
+
+    <br><br>
+    <h2>Hello <%=details.firstname%>!</h2>
     
-    <form style="align-items: center; padding:20px;" method="POST" action="/schedule">
-        <input name="userid" type="hidden" value="<%=user._id%>">
-        <div class="form-group  col-md-4">
-            <label class="required ">First Name</label><br>
-            <input type="text" placeholder="Your first name" name="firstname" class="form-control">
-        </div>
-        <div class="form-group col-md-4">
-            <label class="required">Last Name</label><br>
-            <input type="text" placeholder="Your last name" name="lastname" class="form-control">
-        </div>
-        <div class="form-group col-md-4">
-            <label class="required">Email</label><br>
-            <input type="text" placeholder="Your email address" class="form-control" name="email">
-        </div>
-        <div class="form-group col-md-4">
-            <label>Address</label>
-            <textarea class="form-control" rows="3" name="address"></textarea>
-        </div>
-        <div class="form-group col-md-4">
-            <label>City</label><br>
-            <input type="text" placeholder="City" class="form-control" name="city">
-        </div>
-        <div class="form-group col-md-4">
-            <label>Zip Code</label><br>
-            <input type="text" placeholder="Zip Code" class="form-control" name="zipcode">
-        </div>
-        <div class="form-group col-md-4">
-            <label>State</label>
-            <select class="form-control" name="state">
-                <option value="tamilnadu">Tamil Nadu</option>
-                <option value="kerala">Kerala</option>
-                <option value="karnataka">Karnataka</option>
-                <option value="andhra pradesh">Andhra Pradesh</option>
-                <option value="maharashtra">Maharashtra</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label>Country</label>
-            <select class="form-control" name="country">
-                <option value="india">India</option>
-                <option value="united states">United States</option>
-                <option value="indonesia">Indonesia</option>
-                <option value="france">France</option>
-                <option value="italy"> Italy</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label>Time slot</label>
-            <select class="form-control" name="timeslot">
-                <option value="9.00 a.m. to 12.30 p.m.">9.00 a.m. to 12.30 p.m.</option>
-                <option value="1.00 p.m. to 4.30 p.m.">1.00 p.m. to 4.30 p.m.</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label>Service Type</label>
-            <select class="form-control" name="servicetype">
-                <option value="electrical repair">Electrical Repair</option>
-                <option value="generators">Generators</option>
-                <option value="security">Security</option>
-                <option value="automation">Automation</option>
-                <option value="remodelling">Remodelling</option>
-                <option value="electrical system inspection">Electrical System Inspection</option>
-            </select>
-        </div>
-        <div class="form-group col-md-4">
-            <label>Property Type</label>
-            <select class="form-control" name="propertytype">
-                <option value="residential">Residential</option>
-                <option value="commercial">Commercial</option>
-            </select>
-        </div>
+    <center>
+        
+        <div style="padding:30px;">
 
-        <br>
+            
+            <h1>STATUS OF MY BOOKING!!!</h1>
+            
 
-        <br>
-        <!-- <a class="btn btn-primary" role="button" value="Add Name">Submit</a> -->
+            <h4>You have opted for the timeslot : <%=details.timeslot%></h4>
 
-
-        <button class="btn btn-primary">Submit</button>
-    </form>
-
+            <h5>Service provided's available time slot : <%=confirm.timeslot%></h5>
+            
+    </center>
 
 </body>
 
