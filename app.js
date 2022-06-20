@@ -2,12 +2,17 @@ const express = require('express');
 const app = express();
 const User = require('./models/user');
 const Detail = require('./models/detail');
+const Confirm = require('./models/confirm');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const path = require('path');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
+const bodyParser=require('body-parser');
+const nodemailer=require('nodemailer');
+const PUBLISHABLE_KEY="pk_test_51L7JRtSGln0nDmTvUVdQBRAfHZ5nPJMfmEh060vJZUbcNq16HBMS0FjJlrslbtiwZtz953ShqOxL5hCD0XKZu40M00lrUGS1rN";
+const SECRET_KEY="sk_test_51L7JRtSGln0nDmTvlKnH23ruzpr2czK326d710MA9jCsjarB1MSLM6liXgLnfm3KXWxTzAAycFw5en2sRlrIcCCu00mV9nEmwn";
 
 mongoose.connect('mongodb://localhost:27017/consultancy_login', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -54,10 +59,6 @@ app.post('/register', async (req, res) => {
     }
 })
 
-
-
-
-
 app.get('/login', (req, res) => {
     res.render('login')
 })
@@ -65,56 +66,138 @@ app.get('/failure', (req, res) => {
     res.render('failure')
 })
 
-
 app.get('/index', (req, res) => {
-    res.render('index')
+    if (!req.session.user_id) {
+        res.redirect('login')
+    }
+    else {
+        res.render('index')
+    }
 })
 app.get('/electricalrepair', (req, res) => {
-    res.render('electricalrepair');
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        res.render('electricalrepair');
+    }
+
 })
 app.get('/remodelling', (req, res) => {
-    res.render('remodelling');
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        res.render('remodelling');
+    }
 })
 
 app.get('/generators', (req, res) => {
-    res.render('generators');
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        res.render('generators');
+    }
 })
 
 app.get('/panelupgrades', (req, res) => {
-    res.render('panelupgrades');
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        res.render('panelupgrades');
+    }
 })
 app.get('/automation', (req, res) => {
-    res.render('automation');
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        res.render('automation');
+    }
 })
 app.get('/lighting', (req, res) => {
-    res.render('lighting');
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        res.render('lighting');
+    }
 })
 app.get('/security', (req, res) => {
-    res.render('security');
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        res.render('security');
+    }
 })
 app.get('/homeinspection', (req, res) => {
-    res.render('homeinspection');
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        res.render('homeinspection');
+    }
 })
+
 // app.post('/electricalrepair', async (req, res) => {
 //     res.render('electricalrepair');
 // })
-app.get('/schedule', (req, res) => {
-    res.render('schedule');
+
+app.get('/schedule', async(req, res) => {
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        const id = req.session.user_id;
+        const user = await User.findOne({ _id: id });
+        res.render('schedule', { user });
+    }
 })
-app.post('/schedule',async(req,res)=>{
+app.post('/schedule', async (req, res) => {
+
     const detail = new Detail(req.body);
     await detail.save();
-    res.redirect('adminview');
+
+    res.redirect('/index');
 })
-app.get('/adminview', (req, res) => {
-    res.render('adminview');
+
+app.post('/confirm', async (req, res) => {
+    const confirm = new Confirm(req.body);
+    await confirm.save();
+    res.redirect('/adminview');
+})
+app.get('/adminview', async (req, res) => {
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        const details = await Detail.find({});
+        console.log(details);
+        res.render('adminview/index', { details });
+    }
+})
+app.get('/mystatus', async (req, res) => {
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        const id = req.session.user_id;
+        
+        const details = await Detail.findOne({ userid: id });
+        
+        console.log(details);
+        const confirm = await Confirm.findOne({ userid: id });
+        
+        res.render('mystatus', { details,confirm });
+    }
+})
+app.get('/adminview/:id', async (req, res) => {
+    if (!req.session.user_id) {
+        res.redirect('login')
+    } else {
+        const {id} = req.params;
+        const detail = await Detail.findById(id);
+        console.log(detail);
+        res.render('adminview/confirmationpage', { detail });
+        
+    }
+
 })
 // app.post('/adminview ', async function (req, res) {
-
 //     const details = new Details(req.body);
 //     await details.save();
-    
-
 // })
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
@@ -127,9 +210,10 @@ app.post('/login', async (req, res) => {
                 if (!req.session.user_id) {
                     res.redirect('/login');
                 } else {
-                    res.redirect('/item');
+                    res.redirect('/adminview');
                 }
-            } else {
+            }
+            else {
                 if (!req.session.user_id) {
                     //req.flash('error', "Username or password is incorrect");
                     res.redirect('/failure');
