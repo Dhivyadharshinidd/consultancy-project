@@ -17,6 +17,10 @@ const detailSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Email cannot be blank']
     },
+    mobilenumber: {
+        type: String,
+        required: [true, 'Mobilenumber cannot be blank']
+    },
     address: {
         type: String,
         required: [true, 'Address cannot be blank']
@@ -31,11 +35,10 @@ const detailSchema = new mongoose.Schema({
     },
     state: {
         type: String,
-        enum:['tamilnadu','karnataka','kerala','andhra pradesh','maharashtra']
+        enum:['tamilnadu','karnataka','kerala','andhra pradesh']
     },
-    country: {
-        type: String,
-        enum:['india','united states','indonesia','france','italy']
+    date:{
+        type:String,
     },
     timeslot: {
         type: String,

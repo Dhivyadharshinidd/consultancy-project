@@ -16,6 +16,10 @@
 
 }
 
+td:nth-child(even),
+th:nth-child(even) {
+    background-color: #D6EEEE;
+}
 
 
 /* Slideshow container */

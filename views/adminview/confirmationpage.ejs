@@ -72,9 +72,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/automation">AUTOMATION</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home.html">CONTACT</a>
-                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/logout">LOGOUT</a>
+                    </li>
                 </ul>
             </div>
 
@@ -82,9 +82,9 @@
     </nav>
     <br>
     <h1>Hello Admin!</h1>
-    
+
     <div style="padding: 100px;">
-        
+
 
 
         <h3>Customer <%=detail.firstname%> details!!!</h3>
@@ -107,6 +107,12 @@
                 <label class="required">Email</label><br>
                 <h4>
                     <%=detail.email%>
+                </h4>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="required">Mobile number</label><br>
+                <h4>
+                    <%=detail.mobilenumber%>
                 </h4>
             </div>
             <div class="form-group col-md-4">
@@ -134,18 +140,25 @@
                 </h4>
             </div>
             <div class="form-group col-md-4">
-                <label>Country</label>
+                <label>Date of customer's availability</label>
                 <h4>
-                    <%=detail.country%>
+                    <%=detail.date%>
                 </h4>
+                <label>Date (Please enter the date of your availability)</label>
+                <input type="date" class="form-control" name="date">
             </div>
             <div class="form-group col-md-4">
+                <label>Time slot of customer's availability</label>
+                <h4>
+                    <%=detail.timeslot%>
+                </h4>
                 <label>Time slot (Please enter the time slot of your availability)</label>
                 <select class="form-control" name="timeslot">
                     <option value="9.00 a.m. to 12.30 p.m.">9.00 a.m. to 12.30 p.m.</option>
                     <option value="1.00 p.m. to 4.30 p.m.">1.00 p.m. to 4.30 p.m.</option>
                 </select>
             </div>
+            
             <div class="form-group col-md-4">
                 <label>Service Type</label>
                 <h4>

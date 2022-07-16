@@ -1,0 +1,58 @@
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Paytm-Nodejs</title>
+</head>
+
+<body style="background-color:#f5f3ef">
+    <div class="row my-5">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <form class="" action="/paynow" method="post">
+                        <div class="form-group  col-md-12">
+                            <label class="required" name="firstname">First Name</label><br>
+                            <input  type="text" value="<%=detail.firstname.toUpperCase()%>" name="firstname" class="form-control">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label class="required" name="lastname">Last Name</label><br>
+                            <input  type="text" value="<%=detail.lastname.toUpperCase()%>" name="lastname" class="form-control">
+                            
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label class="required" name="email">Email</label><br>
+                            <input  type="text" value="<%=detail.email%>" name="email" class="form-control">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label class="required" name="mobilenumber">Mobile number</label><br>
+                            <input  type="text" value="<%=detail.mobilenumber%>" name="mobilenumber" class="form-control">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label name="servicetype">Service Type</label>
+                            <input  type="text" value="<%=detail.servicetype%>" name="servicetype" class="form-control">
+                            
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label name="propertytype">Property Type</label>
+                            <input  type="text" value="<%=detail.propertytype%>" name="propertytype" class="form-control">
+                     
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label name="price">Price</label>
+                            <input  type="text" value="<%=detail.price%>" name="price" class="form-control">
+                          
+                        </div>
+                        <div class="form-group">
+                            <button class="btn form-control btn-primary">Pay Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

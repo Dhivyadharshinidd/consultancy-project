@@ -82,7 +82,7 @@
     <center>
         <h3 style="padding:30px;">SCHEDULE APPOINTMENT</h3>
     </center>
-    
+
     <form style="align-items: center; padding:20px;" method="POST" action="/schedule">
         <input name="userid" type="hidden" value="<%=user._id%>">
         <div class="form-group  col-md-4">
@@ -96,6 +96,10 @@
         <div class="form-group col-md-4">
             <label class="required">Email</label><br>
             <input type="text" placeholder="Your email address" class="form-control" name="email">
+        </div>
+        <div class="form-group col-md-4">
+            <label class="required">Mobile number</label><br>
+            <input type="text" placeholder="Your mobile number" class="form-control" name="mobilenumber">
         </div>
         <div class="form-group col-md-4">
             <label>Address</label>
@@ -116,18 +120,11 @@
                 <option value="kerala">Kerala</option>
                 <option value="karnataka">Karnataka</option>
                 <option value="andhra pradesh">Andhra Pradesh</option>
-                <option value="maharashtra">Maharashtra</option>
             </select>
         </div>
         <div class="form-group col-md-4">
-            <label>Country</label>
-            <select class="form-control" name="country">
-                <option value="india">India</option>
-                <option value="united states">United States</option>
-                <option value="indonesia">Indonesia</option>
-                <option value="france">France</option>
-                <option value="italy"> Italy</option>
-            </select>
+            <label>Date</label>
+            <input type="date" class="form-control" name="date">
         </div>
         <div class="form-group col-md-4">
             <label>Time slot</label>
@@ -136,35 +133,63 @@
                 <option value="1.00 p.m. to 4.30 p.m.">1.00 p.m. to 4.30 p.m.</option>
             </select>
         </div>
+
         <div class="form-group col-md-4">
             <label>Service Type</label>
-            <select class="form-control" name="servicetype">
+            <select id="servicetype" class="form-control" name="servicetype">
                 <option value="electrical repair">Electrical Repair</option>
                 <option value="generators">Generators</option>
                 <option value="security">Security</option>
-                <option value="automation">Automation</option>
                 <option value="remodelling">Remodelling</option>
                 <option value="electrical system inspection">Electrical System Inspection</option>
             </select>
         </div>
+
         <div class="form-group col-md-4">
             <label>Property Type</label>
             <select class="form-control" name="propertytype">
                 <option value="residential">Residential</option>
                 <option value="commercial">Commercial</option>
             </select>
+
         </div>
-
         <br>
+        <button class="btn btn-primary" type="button" onclick="myFunction()">Get Price</button>
+        <div class="form-group col-md-4">
+            <label>Price</label><br>
+            <input type="text" class="form-control" name="price" id="price">
 
+        </div>
+        <br>
         <br>
         <!-- <a class="btn btn-primary" role="button" value="Add Name">Submit</a> -->
-
-
         <button class="btn btn-primary">Submit</button>
     </form>
 
 
+
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("servicetype").value;
+
+            if (x == "electrical repair") {
+                document.getElementById("price").setAttribute("value", "250");
+            } if (x == "generators") {
+                document.getElementById("price").setAttribute("value", "7500");
+            }
+            if (x == "security") {
+                document.getElementById("price").setAttribute("value", "150");
+            }
+
+            if (x == "remodelling") {
+                document.getElementById("price").setAttribute("value", "1000");
+            }
+            if (x == "electrical system inspection") {
+                document.getElementById("price").setAttribute("value", "750");
+            }
+        }
+    </script>
 </body>
 
 </html>

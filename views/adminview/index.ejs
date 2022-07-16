@@ -15,10 +15,10 @@
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
     <script>function myFunction(element, color) {
-            
+
             element.style.color = color;
             alert("Confirmation alert!");
-            
+
         }</script>
 
 </head>
@@ -77,9 +77,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/automation">AUTOMATION</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home.html">CONTACT</a>
-                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/logout">LOGOUT</a>
+                    </li>
                 </ul>
             </div>
 
@@ -97,11 +97,12 @@
                 <th scope="col">FirstName</th>
                 <th scope="col">LastName</th>
                 <th scope="col">Email</th>
+                <th scope="col">MobileNumber</th>
                 <th scope="col">Address</th>
                 <th scope="col">City</th>
                 <th scope="col">Zipcode</th>
                 <th scope="col">State</th>
-                <th scope="col">Country</th>
+                <th scope="col">Date</th>
                 <th scope="col">TimeSlot</th>
                 <th scope="col">ServiceType</th>
                 <th scope="col">PropertyType</th>
@@ -119,13 +120,16 @@
                                 <%=count%>
                             </td>
                             <td>
-                                <%=i.firstname.toUpperCase()%>
+                                <%=i.firstname%>
                             </td>
                             <td>
-                                <%=i.lastname.toUpperCase()%>
+                                <%=i.lastname%>
                             </td>
                             <td>
                                 <%=i.email%>
+                            </td>
+                            <td>
+                                <%=i.mobilenumber%>
                             </td>
                             <td>
                                 <%=i.address%>
@@ -137,13 +141,13 @@
                                 <%=i.zipcode%>
                             </td>
                             <td>
-                                <%=i.state.toUpperCase()%>
+                                <%=i.state%>
                             </td>
                             <td>
-                                <%=i.country.toUpperCase()%>
+                                <%=i.date%>
                             </td>
                             <td>
-                                <%=i.timeslot.toUpperCase()%>
+                                <%=i.timeslot%>
                             </td>
                             <td>
                                 <%=i.servicetype.toUpperCase()%>
@@ -152,7 +156,8 @@
                                 <%=i.propertytype.toUpperCase()%>
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="/adminview/<%=i._id%>" onclick="myFunction(this, 'green')" id="a">Confirm</a>
+                                <a class="btn btn-primary" href="/adminview/<%=i._id%>"
+                                    onclick="myFunction(this, 'green')" id="a">Confirm</a>
                             </td>
 
                     </tr>
